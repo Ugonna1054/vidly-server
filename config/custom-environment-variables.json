@@ -1,3 +1,4 @@
 {
-    "myPrivateKey": "vidly_myPrivateKey"
+    "myPrivateKey": "vidly_myPrivateKey",
+    "db":"vidlydb"
   }
