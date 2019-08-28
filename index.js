@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const winston = require('winston');
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 require('./startup/logging')();
 require('./startup/routes')(app);
