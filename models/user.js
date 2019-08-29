@@ -32,7 +32,7 @@ userSchema.methods.generateAuthToken = function() {
     let mins = 60
     let hrs = mins * 60
     let d = new Date ()
-    const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin,name:this.name,iatTime:new Date(d.getTime()),expTime:new Date((d.getTime()) + ( mins*  1 *  1000))}, config.get('myPrivateKey'), {expiresIn:'0.01h'})
+    const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin,name:this.name,iatTime:new Date(d.getTime()),expTime:new Date((d.getTime()) + ( hrs*  1 *  1000))}, config.get('myPrivateKey'), {expiresIn:'1h'})
     return token;
 }
 
