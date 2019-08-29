@@ -4,7 +4,7 @@ require('winston-mongodb');
 
 
 module.exports = function () {
-    //dthis accounts for uncaught exceptions outside express
+    //this accounts for uncaught exceptions outside express
     winston.handleExceptions(  
         new winston.transports.File({filename:'uncaughtexceptions.log'}),
         new winston.transports.Console({colorize:true, prettyPrint:true}),

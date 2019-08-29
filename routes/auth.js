@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
+
 //Sign in User
 router.post('/', async (req, res) => {
   //Check for validation errors
@@ -18,26 +19,15 @@ router.post('/', async (req, res) => {
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) return res.status(400).send('Invalid email or password.');
   // using JWT to create token and storing the token in a secret in an Env variable 
-  const token = user.generateAuthToken()
-  res.send(token);
+  let token = user.generateAuthToken()
+  res.header('x-auth-token', token).send(_.pick(user, ['name', 'email']));
 });
 
 //Signout User
 
-// router.delete('/me', async (req, res) => {
-//   try {
-//     let user = await User.findById(req.user._id)
-//     const token = user.generateAuthToken()
-//      await user.remove(token)
-//     res.send(user);
-//   }
-
-//   catch (err) {
-//     console.log(err);
-//     res.status(400).send(err)
-//   }
+// router.post('/', async (req, res) => {
+//    res.header('x-auth-token', '').send('Logged out')
 // });
-
 
 
 function validate(req) {
